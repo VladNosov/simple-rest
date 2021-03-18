@@ -2,6 +2,8 @@ package net.pet.project.simplerest.controller.administrating;
 
 import lombok.extern.slf4j.Slf4j;
 import net.pet.project.simplerest.controller.AbstractController;
+import net.pet.project.simplerest.dto.administrating.UserDto;
+import net.pet.project.simplerest.mapper.administrating.UserMapper;
 import net.pet.project.simplerest.model.administrating.User;
 import net.pet.project.simplerest.service.administrating.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/admin/user")
-public class UserController extends AbstractController<User, User, Long> {
+public class UserController extends AbstractController<User, UserDto, Long> {
 
     @Autowired
     public UserController(UserService service) {
@@ -25,12 +27,12 @@ public class UserController extends AbstractController<User, User, Long> {
     //================================================= PRIVATE METHODS ================================================
 
     @Override
-    protected User toEntity(User dto) {
-        return dto;
+    protected User toEntity(UserDto dto) {
+        return UserMapper.toEntity(dto);
     }
 
     @Override
-    protected User toDTO(User entity) {
-        return entity;
+    protected UserDto toDTO(User entity) {
+        return UserMapper.toDto(entity);
     }
 }

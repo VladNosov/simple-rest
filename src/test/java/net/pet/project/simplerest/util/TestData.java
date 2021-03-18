@@ -1,5 +1,7 @@
 package net.pet.project.simplerest.util;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import net.pet.project.simplerest.dto.administrating.UserDto;
 import net.pet.project.simplerest.model.IEntity;
 import net.pet.project.simplerest.model.administrating.User;
 import org.junit.jupiter.params.provider.Arguments;
@@ -26,6 +28,14 @@ public final class TestData {
 
     public static <T extends IEntity<?>> Page<T> inPage(List<T> content) {
         return new PageImpl<>(content);
+    }
+
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static <E extends IEntity<T>, T> E withId(T id, E entity) {
@@ -63,6 +73,18 @@ public final class TestData {
         return User.builder()
                 .login("admin")
                 .password("password")
+                .active(true)
+                .build();
+    }
+
+    /*
+     * CREATE DTO
+     */
+    public static UserDto createValidUserDtoWithoutId() {
+        return UserDto.builder()
+                .login("admin")
+                .password("password")
+                .active(true)
                 .build();
     }
 }

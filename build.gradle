@@ -73,6 +73,69 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
-test {
-	useJUnitPlatform()
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		csv.enabled false
+		html.enabled true
+	}
+	afterEvaluate {}
 }
+
+test {
+	failFast = false
+
+	testLogging {
+		exceptionFormat "FULL"
+		events "PASSED", "FAILED", "SKIPPED", "STANDARD_OUT"
+		displayGranularity = 4
+	}
+	useJUnitPlatform {
+		includeEngines 'junit-jupiter'
+	}
+	afterSuite { desc, result ->
+		if (!desc.parent) { // will match the outermost suite
+			def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+			def startItem = '|  ', endItem = '  |'
+			def repeatLength = startItem.length() + output.length() + endItem.length()
+			println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
+		}
+	}
+}
+test.finalizedBy jacocoTestReport
+
+task jpaTest {
+	description 'Run jpa-test'
+
+	doLast {
+		println 'Start jpa-test'
+		test.filter {
+			includeTestsMatching "net.pet.project.simplerest.module.jpa.*"
+		}
+	}
+}
+jpaTest.finalizedBy test
+
+task mvcTest {
+	description 'Run mvc-test'
+
+	doLast {
+		println 'Start mvc-test'
+		test.filter {
+			includeTestsMatching "net.pet.project.simplerest.module.mvc.*"
+		}
+	}
+}
+mvcTest.finalizedBy test
+
+task unitTest {
+	description 'Run unit-test'
+
+	doLast {
+		println 'Start unit-test'
+		test.filter {
+			includeTestsMatching "net.pet.project.simplerest.unit.*"
+		}
+	}
+}
+unitTest.finalizedBy test

@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import net.pet.project.simplerest.dto.IDto;
 import net.pet.project.simplerest.model.IEntity;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -29,8 +28,7 @@ import javax.validation.constraints.Size;
 @EqualsAndHashCode
 @Table(name = "users")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//todo 21.03.18 add dto
-public class User implements IEntity<Long>, IDto {
+public class User implements IEntity<Long> {
 
     @Id
     @SequenceGenerator(name = "user_seq", sequenceName = "s_users_seq", allocationSize = 1)
