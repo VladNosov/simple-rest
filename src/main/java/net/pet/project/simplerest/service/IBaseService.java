@@ -12,7 +12,7 @@ import java.util.Optional;
  * Interface for base CRUD service for {@link IEntity}
  * @param <E> - entity that stored in DB
  * @param <T> - identifier type
- * @author Vlad Nosov
+ * @author VN
  */
 public interface IBaseService<E extends IEntity<T>, T> {
 

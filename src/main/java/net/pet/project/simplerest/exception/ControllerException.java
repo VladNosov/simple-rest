@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Exception for controller layer
- * @author Vlad Nosov
+ * @author VN
  */
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
 public class ControllerException extends ApplicationException {

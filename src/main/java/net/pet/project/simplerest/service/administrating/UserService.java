@@ -18,7 +18,7 @@ import java.util.Optional;
 
 /**
  * Service for {@link User}
- * @author Vlad Nosov
+ * @author VN
  */
 @Slf4j
 @Service

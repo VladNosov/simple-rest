@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * Interface for data transfer object
- * @author Vlad Nosov
+ * @author VN
  */
 public interface IDto extends Serializable {
 }

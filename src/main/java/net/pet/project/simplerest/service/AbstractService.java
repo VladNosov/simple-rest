@@ -24,7 +24,7 @@ import static java.lang.String.format;
  * @param <E> - entity that stored in DB
  * @param <T> - identifier type
  * @param <R> - repository {@link IBaseRepository} for work with {@link E}
- * @author Vlad Nosov
+ * @author VN
  */
 @Slf4j
 @Transactional(readOnly = true)

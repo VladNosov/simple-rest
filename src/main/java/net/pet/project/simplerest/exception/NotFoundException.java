@@ -7,7 +7,7 @@ import static java.lang.String.format;
 
 /**
  * Service layer exception for cases when entity wasn't found
- * @author Vlad Nosov
+ * @author VN
  */
 @ResponseStatus(code = HttpStatus.UNPROCESSABLE_ENTITY)
 public class NotFoundException extends ServiceException {

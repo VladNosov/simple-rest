@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * Configuration for swagger (based on openapi 3.0)
- * @author Vlad Nosov
+ * @author VN
  */
 @Slf4j
 @Configuration

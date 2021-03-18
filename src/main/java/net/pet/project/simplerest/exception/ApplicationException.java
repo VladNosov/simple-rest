@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Common application exception
- * @author Vlad Nosov
+ * @author VN
  */
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
 public class ApplicationException extends RuntimeException {

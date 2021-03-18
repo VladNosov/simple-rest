@@ -8,7 +8,7 @@ import java.util.Optional;
 
 /**
  * Repository for {@link User}
- * @author Vlad Nosov
+ * @author VN
  */
 @Repository
 public interface UserRepository extends IBaseRepository<User, Long> {

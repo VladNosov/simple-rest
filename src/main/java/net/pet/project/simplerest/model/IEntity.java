@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Interface for entity with identifier {@link T}
  * @param <T> type of identifier
- * @author Vlad Nosov
+ * @author VN
  */
 public interface IEntity<T> extends Serializable {
     T getId();

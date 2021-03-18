@@ -30,7 +30,7 @@ import static java.util.stream.Collectors.toList;
  * @param <E> - entity
  * @param <D> - dto
  * @param <T> - type of identifier
- * @author Vlad Nosov
+ * @author VN
  */
 public abstract class AbstractController<E extends IEntity<T>, D extends IDto, T> {
 

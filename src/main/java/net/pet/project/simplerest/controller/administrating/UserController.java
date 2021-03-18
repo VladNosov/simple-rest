@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Realisation {@link RestController} for {@link User}.
- * @author Vlad Nosov
+ * @author VN
  */
 @Slf4j
 @RestController

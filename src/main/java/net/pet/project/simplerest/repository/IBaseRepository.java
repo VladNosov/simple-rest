@@ -9,7 +9,7 @@ import org.springframework.data.repository.NoRepositoryBean;
  * Common realisation repository layer for entity {@link IEntity}
  * @param <E> - entity that stored in DB
  * @param <T> - identifier type
- * @author Vlad Nosov
+ * @author VN
  */
 @NoRepositoryBean
 public interface IBaseRepository<E extends IEntity<T>, T> extends JpaRepository<E, T>, JpaSpecificationExecutor<E> {
