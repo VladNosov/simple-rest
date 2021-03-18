@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  simple-db:
+    restart: on-failure:1
+    image: postgres:13.2
+    command: ["postgres", "-c", "logging_collector=on", "-c", "log_statement=all"]
+    environment:
+      POSTGRES_DB: simple
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+        - "5432:5432"
+    volumes:
+      - ./volumes/bd:/var/lib/postgresql/data
+    networks:
+      - simple
+
+networks:
+  simple:
+    name: simple_net
+    driver: bridge

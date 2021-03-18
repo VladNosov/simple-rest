@@ -1,0 +1,74 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'idea'
+	id 'jacoco'
+}
+
+group = 'net.pet.project'
+description = 'Simple rest Application'
+version = '0.0.1'
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+java.sourceCompatibility = JavaVersion.VERSION_15
+java.targetCompatibility = JavaVersion.VERSION_15
+jar.enabled = true
+
+import org.apache.tools.ant.filters.ReplaceTokens
+processResources {
+	filesMatching("**/application.yml") {
+		filter ReplaceTokens, tokens: [
+				'project.description' : project.description,
+				'project.version' : project.version
+		]
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+ext {
+	set('swaggerVersion', "1.5.6")
+}
+
+dependencies {
+	/*SPRING STARTER*/
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	/*LOMBOK*/
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+
+	/*SWAGGER*/
+	implementation "org.springdoc:springdoc-openapi-ui:${swaggerVersion}"
+	implementation "org.springdoc:springdoc-openapi-data-rest:${swaggerVersion}"
+
+	/*UTIL*/
+	implementation 'org.jetbrains:annotations:16.0.2'
+	implementation 'org.apache.commons:commons-lang3'
+
+	/*STORAGE*/
+	runtimeOnly 'org.postgresql:postgresql'
+
+	/*TEST*/
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
+
+test {
+	useJUnitPlatform()
+}
