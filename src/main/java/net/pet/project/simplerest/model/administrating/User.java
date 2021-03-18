@@ -29,6 +29,7 @@ import javax.validation.constraints.Size;
 @EqualsAndHashCode
 @Table(name = "users")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+//todo 21.03.18 add dto
 public class User implements IEntity<Long>, IDto {
 
     @Id

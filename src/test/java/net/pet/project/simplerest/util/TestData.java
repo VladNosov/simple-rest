@@ -2,14 +2,17 @@ package net.pet.project.simplerest.util;
 
 import net.pet.project.simplerest.model.IEntity;
 import net.pet.project.simplerest.model.administrating.User;
+import org.junit.jupiter.params.provider.Arguments;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static java.util.Collections.singleton;
 import static java.util.Collections.singletonList;
+import static org.junit.jupiter.params.provider.Arguments.of;
 
 public final class TestData {
 
@@ -33,6 +36,19 @@ public final class TestData {
     public static <T extends IEntity<?>> T withoutId(T entity) {
         entity.setId(null);
         return entity;
+    }
+
+    /*
+     * TEST DATA
+     */
+    public static Stream<Arguments> createBlankWithId() {
+        return Stream.of(
+                of(null, null),
+                of("", null),
+                of(" ", null),
+                of(null, 1L),
+                of("", 1L),
+                of(" ", 1L));
     }
 
     /*

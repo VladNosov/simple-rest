@@ -38,6 +38,7 @@ repositories {
 
 ext {
 	set('swaggerVersion', "1.5.6")
+	set('testContainersVersion', "1.15.2")
 }
 
 dependencies {
@@ -66,6 +67,9 @@ dependencies {
 
 	/*TEST*/
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testCompile "org.testcontainers:testcontainers:${testContainersVersion}"
+	testCompile "org.testcontainers:junit-jupiter:${testContainersVersion}"
+	testCompile "org.testcontainers:postgresql:${testContainersVersion}"
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 

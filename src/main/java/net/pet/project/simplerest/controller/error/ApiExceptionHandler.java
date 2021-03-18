@@ -69,7 +69,7 @@ public class ApiExceptionHandler {
                 ex,
                 false,
                 VALIDATION_ERROR,
-                "Validation error", //todo replace to i18n
+                "Validation error", //todo 21.03.18 replace to i18n
                 validationErrors.toArray(new String[validationErrors.size()])
         );
     }
